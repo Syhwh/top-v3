@@ -4,50 +4,48 @@ function Node (value) {
 }
 
 function Stack () {
-    this.items = null;
-    this.length = 0;
-
+    var items = null;
+    var length = 0;
     this.push = function (value) {
         const node = new Node (value);
-        if (this.items===null) {
-            this.items = node;
+        if (items===null) {
+            items = node;
         } else {
-            let current = this.items;
+            let current = items;
             node.next = current;
-            this.items = node
-        }
-        
+            items = node
+        }        
         this.length++ 
     }
 
     this.pop = function () {
-        if (this.length === 1) {
-            let current = this.items.value;
-            this.items=null;
-            this.length--
+        if (length === 1) {
+            let current = items.value;
+            items=null;
+            length--
             return current;        
-        } else if (this.items != null) { 
-            let current = this.items.value;          
-            this.items = this.items.next;
-            this.length--
+        } else if (items != null) { 
+            let current = items.value;          
+            items = items.next;
+            length--
             return current;
         }else {
             return false;
         }        
     }
     this.size = function(){
-        return this.length;
+        return length;
     }
 
     this.isEmpty = function () {
-      return  this.length!= 0 ? false: true
+      return  length!= 0 ? false: true
     }
 
 }
 
 module.exports = Stack;
 
-/*
+
 const stack = new Stack();
 stack.push('a');
 stack.push('b');
@@ -63,4 +61,3 @@ console.log(stack.pop());
 console.log(stack); 
 
 console.log(stack.isEmpty());
-*/
